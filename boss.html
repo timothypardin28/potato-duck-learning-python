@@ -40,7 +40,7 @@
       </div>
       <div class="video-controls">
         <p class="cutscene-narrative">
-          To start the journey, Quackbit has to overcome the first guardian. The Jumping River. This is the river that separates the village from the dark path to the PyThorn nest. There is no bridge in sight. The only way across is a long line of mossy, floating stones.
+          Quackbit finally reach the PyThorn's Nest, PyThorn is waiting in its nest to defeat Quackbit. PyThorn body is 25 times bigger than Quackbit, Quackbit doesn't stand a chance if he face PyThorn directly. He has to look for a new strategy.
         </p>
         <button id="skip-video-btn" class="btn-skip">Skip Cutscene &rarr;</button>
       </div>
@@ -51,18 +51,24 @@
         <span class="chapter-tag">Boss</span>
         <h2>The Pythorn</h2>
         <div class="story-quote">
-          The stones are numbered sequentially from 1 to the far shore. However, PyThorn applied a defense mechanism into them: every odd-numbered stone is a trap, while every even-numbered stone is solid and safe. To cross safely, Quackbit must JUMP over the odd stones and STEP only on the even ones.
+          There is a scar on the PyThorn's body, it must be the weak spot of PyThorn. Quackbit is planning to stab on the middle point of that scar because Quackbit is afraid he will miss if he targets the edge point. Based on his observation towards PyThorn's movement, Quackbit can perform at most two times attack safely. He just needs to think when is the best time to attack PyThorn.
         </div>
 
         <h3>Task</h3>
-        <p>Define a function <code>jump_or_step(stone_index)</code> that accepts an integer <code>stone_index</code>.</p>
-        <p>Your function should return the string <code>'JUMP'</code> if the <code>stone_index</code> is odd and return the string <code>'STEP'</code> if it is even.</p>
+        <p>Define a function <code>choose_stabbingPoint(x, y)</code> that accepts two list of integers <code>x</code> and <code>y</code> which are the coordinate in PyThorn body. Your function should return the median of these sorted list in <code>O(log(m+n))</code> runtime complexity. PyThorn wont wait for you while you were thinking where to stab it, you should choose the point quickly.</p>
+        <br>
+        <p>You also need to define a function <code>maxDamage(weak_degree)</code> that accepts a list of integers <code>weak_degree</code>. Your function should return the maximal damage you can deal with at most two stabs, that maximal damage is largest difference of weak degree you can make in one stab (<code>endWeakness - initialWeakness</code>) and you can't perform two stabs simultaneously.</p>
+        <br>
+        <p>If you're able to choose the right stabbing point and correct timing to attack, you can continue this tempo of fighting and defeat PyThorn.</p>
 
         <h3>Examples</h3>
-        <div class="code-example-box">jump_or_step(5)  # Returns: 'JUMP'</div>
+        <div class="code-example-box">choose_stabbingPoint([1, 2], [3, 4])  # Returns: 2.500
+maxDamage([3, 3, 5, 0, 0, 3, 1, 4])  # Returns: 6
 
-        <h3>Guidelines</h3>
-        <p>Think about how do you usually determine a number is even or odd</p>
+Explanation
+The median of [1, 2, 3, 4] is 2.5
+
+Stab on t = 4 (weakness = 0) and pull out on t = 6 (weakness = 3), damage = 3 - 0 = 3. Then stab on t = 7 (weakness = 1) and pull out on t = 8 (weakness = 4), damage = 4 - 1 = 3.</div>
       </section>
 
       <section class="editor-panel">
