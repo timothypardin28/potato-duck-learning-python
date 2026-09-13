@@ -1,24 +1,3 @@
-/* ============================================================
-   Quackbit - Solution Archive (data layer)
-   ------------------------------------------------------------
-   Stores the code a player submitted when a challenge PASSED,
-   so it can be reviewed later from any chapter or from
-   history.html.
-
-   Uses its own IndexedDB database ("quackbitSolutions") on
-   purpose: the auth database ("userDatabase") is owned by
-   login.js / register.js. Keeping them separate means this
-   feature never forces a version bump there.
-
-   Public API (window.QuackbitSolutions):
-     save({ owner, chapterNumber, chapterTitle, code, message })
-     get(owner, chapterNumber)
-     listByOwner(owner)
-     remove(owner, chapterNumber)
-     clearOwner(owner)
-   All methods return a Promise.
-   ============================================================ */
-
 (function (global) {
     "use strict";
 
@@ -79,7 +58,6 @@
         );
     }
 
-    /* ---------- read ---------- */
 
     function get(owner, chapterNumber) {
         const box = {};
@@ -108,7 +86,6 @@
         });
     }
 
-    /* ---------- write ---------- */
 
     function save(payload) {
         const owner = String(payload.owner || "guest").trim().toLowerCase();

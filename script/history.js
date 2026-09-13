@@ -1,9 +1,3 @@
-/* ============================================================
-   Quackbit - Saved Code archive page (history.html)
-   Lists every challenge the player has solved, with the exact
-   code that was accepted.
-   ============================================================ */
-
 document.addEventListener("DOMContentLoaded", async () => {
     const STORIES = window.QUACKBIT_STORIES || [];
     const viewer = window.QuackbitSolutionViewer;
@@ -46,7 +40,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const owner = (currentUser.email || currentUser.username ||
                   (currentUser.id ? `id_${currentUser.id}` : "guest")).trim().toLowerCase();
 
-    /* ---------- state ---------- */
     const gridEl = document.getElementById("history-grid");
     const emptyEl = document.getElementById("history-empty");
     const countEl = document.getElementById("history-count");
@@ -132,7 +125,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }).join("");
     }
 
-    /* ---------- events ---------- */
     gridEl.addEventListener("click", async (event) => {
         const button = event.target.closest("[data-action]");
         if (!button) return;
