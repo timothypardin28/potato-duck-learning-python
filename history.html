@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quackbit | My Saved Code</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/theme/dracula.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/solution-history.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">🦆 Quackbit</a>
+    </div>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="story.html">Story</a></li>
+        <li><a href="history.html" class="active">My Code</a></li>
+        <li><a href="team.html">About Us</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <a href="login.html" class="login-text">Log In</a>
+    </div>
+  </header>
+
+  <main class="history-main">
+    <section class="history-hero">
+      <div class="history-hero-badge">💾 Solution Archive</div>
+      <h1>My Saved Code</h1>
+      <p>
+        Every challenge you pass is stored here with the exact code that was accepted.
+        Come back any time to review how you solved an earlier village or guardian.
+      </p>
+      <span id="history-count" class="history-count">Loading your archive...</span>
+    </section>
+
+    <nav class="history-filter-nav" aria-label="Archive categories">
+      <button type="button" class="filter-btn active" data-category="all">🗺️ All</button>
+      <button type="button" class="filter-btn" data-category="village">🏡 Village</button>
+      <button type="button" class="filter-btn" data-category="guardian">⚔️ Guardian</button>
+      <button type="button" class="filter-btn" data-category="boss">🔥 Final Boss</button>
+      <button type="button" id="clear-all-btn" class="btn-clear-all" style="display: none;">Clear Archive</button>
+    </nav>
+
+    <section id="history-grid" class="history-grid" aria-live="polite"></section>
+    <div id="history-empty" class="history-empty" style="display: none;"></div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/mode/python/python.min.js"></script>
+  <script src="script/stories-data.js"></script>
+  <script src="script/solutions-db.js"></script>
+  <script src="script/solution-viewer.js"></script>
+  <script src="script/history.js"></script>
+</body>
+</html>

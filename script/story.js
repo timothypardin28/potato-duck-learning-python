@@ -94,6 +94,85 @@ window.initPreparationChapter = function (config) {
             });
         }
 
+        /* ============================================================
+           Solution Archive
+           Shows the previously accepted answer for this chapter and
+           keeps `savedSolution` in sync after every successful submit.
+           ============================================================ */
+        let savedSolution = null;
+
+        function renderSavedBanner() {
+            const host = document.querySelector(".problem-panel");
+            if (!host || !window.QuackbitSolutionViewer) return;
+
+            let banner = document.getElementById("saved-solution-banner");
+
+            if (!savedSolution) {
+                if (banner) banner.remove();
+                return;
+            }
+
+            if (!banner) {
+                banner = document.createElement("div");
+                banner.id = "saved-solution-banner";
+                banner.className = "saved-solution-banner";
+                host.insertBefore(banner, host.firstChild);
+            }
+
+            banner.innerHTML = `
+                <div class="saved-banner-text">
+                    <strong>✅ Solution saved for this challenge</strong>
+                    <span>Last saved ${window.QuackbitSolutionViewer.formatDate(savedSolution.updatedAt)}</span>
+                </div>
+                <div class="saved-banner-actions">
+                    <button type="button" id="view-saved-btn" class="btn-saved-view">View Saved Code</button>
+                    <button type="button" id="load-saved-btn" class="btn-saved-load">Load into Editor</button>
+                    <a href="history.html" class="btn-saved-all">All Saved Code &rarr;</a>
+                </div>
+            `;
+
+            banner.querySelector("#view-saved-btn").addEventListener("click", () => {
+                window.QuackbitSolutionViewer.open(savedSolution);
+            });
+
+            banner.querySelector("#load-saved-btn").addEventListener("click", () => {
+                if (confirm("Replace the editor content with your saved solution?")) {
+                    editor.setValue(savedSolution.code || "");
+                    editor.focus();
+                }
+            });
+        }
+
+        async function refreshSavedSolution() {
+            if (!window.QuackbitSolutions) return null;
+            try {
+                savedSolution = await window.QuackbitSolutions.get(userIdentifier, chapterNumber);
+            } catch (err) {
+                console.warn("Could not read the solution archive:", err);
+                savedSolution = null;
+            }
+            renderSavedBanner();
+            return savedSolution;
+        }
+
+        async function archiveSolution(code, message) {
+            if (!window.QuackbitSolutions) return;
+            try {
+                savedSolution = await window.QuackbitSolutions.save({
+                    owner: userIdentifier,
+                    chapterNumber,
+                    chapterTitle: chapterTitle || `Chapter ${chapterNumber}`,
+                    code,
+                    message
+                });
+                renderSavedBanner();
+            } catch (err) {
+                console.warn("Could not save the solution to the archive:", err);
+            }
+        }
+
+        refreshSavedSolution();
+
         function transitionToChallenge() {
             if (video && !video.paused) {
                 video.pause();
@@ -198,6 +277,7 @@ window.initPreparationChapter = function (config) {
                             ${passed ? `
                                 <a href="${nextTarget}" class="btn-outcome-next">${nextText} &rarr;</a>
                                 <button type="button" id="outcome-review-btn" class="btn-outcome-review">Review Code ↩</button>
+                                <button type="button" id="outcome-saved-btn" class="btn-outcome-saved">💾 Saved Code</button>
                             ` : `
                                 <button type="button" id="outcome-retry-btn" class="btn-outcome-retry">Back to Editor & Try Again ↩</button>
                             `}
@@ -298,6 +378,18 @@ window.initPreparationChapter = function (config) {
             if (outcomeReviewBtn) {
                 outcomeReviewBtn.addEventListener("click", returnToEditor);
             }
+
+            const outcomeSavedBtn = document.getElementById("outcome-saved-btn");
+            if (outcomeSavedBtn) {
+                outcomeSavedBtn.addEventListener("click", async () => {
+                    const record = savedSolution || (await refreshSavedSolution());
+                    if (record && window.QuackbitSolutionViewer) {
+                        window.QuackbitSolutionViewer.open(record);
+                    } else {
+                        alert("No saved solution found for this chapter yet.");
+                    }
+                });
+            }
         }
 
         if (submitBtn) {
@@ -333,6 +425,9 @@ window.initPreparationChapter = function (config) {
                         const currentUnlocked = parseInt(localStorage.getItem(progressKey) || "1", 10);
                         const newUnlocked = Math.max(currentUnlocked, chapterNumber + 1);
                         localStorage.setItem(progressKey, newUnlocked.toString());
+
+                        // Archive the accepted code so it can be reviewed later.
+                        await archiveSolution(userCode, message);
 
                         if (nextBtn) {
                             nextBtn.style.display = "inline-flex";
