@@ -1,16 +1,3 @@
-/* ============================================================
-   Quackbit - Solution Archive (view layer)
-   ------------------------------------------------------------
-   Shared modal used by the chapter pages (story.js) and by the
-   archive page (history.js) to display a saved solution.
-
-   Public API (window.QuackbitSolutionViewer):
-     open(record)          show a saved solution in a modal
-     close()               close the modal
-     formatDate(iso)       human readable timestamp
-     escapeHtml(text)
-   ============================================================ */
-
 (function (global) {
     "use strict";
 
@@ -39,8 +26,6 @@
         });
     }
 
-    /* Renders read-only code. Uses CodeMirror when the page already
-       loaded it, otherwise falls back to a plain <pre> block. */
     function renderCode(container, code) {
         container.innerHTML = "";
 
@@ -174,7 +159,6 @@
                 versionsHost.appendChild(block);
             });
 
-            // CodeMirror needs the container to be visible before it measures.
             const details = modal.querySelector(".solution-versions");
             details.addEventListener("toggle", () => {
                 if (!details.open || details.dataset.rendered === "yes") return;

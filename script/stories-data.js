@@ -1,11 +1,3 @@
-/* ============================================================
-   Quackbit - Story catalogue (single source of truth)
-   ------------------------------------------------------------
-   Shared by story-hub.js (the story grid) and history.js (the
-   saved code archive). `level` matches the `chapterNumber` that
-   each chapter config passes to initPreparationChapter().
-   ============================================================ */
-
 window.QUACKBIT_STORIES = [
     {
         id: "v1",
