@@ -7,12 +7,13 @@
     padding: 0;
 }
 
-.header.header-alt {
+.header.header-alt, .navbar {
     background-color: var(--header-color-1section);
+    border: none;
 }
 
-.user-menu-dropdown {
-    background: var(--header-color-1section);
+.user-menu-dropdown{
+    background-color: var(--header-color-1section);
 }
 
 #bg-music {
@@ -341,7 +342,7 @@ div[data-label="Challenges"]:hover {
 }
 
 .story-visuals {
-    flex: 1 1 400px;
+    flex: 1 1;
     position: relative;
     display: flex;
     justify-content: center;
@@ -454,9 +455,43 @@ div[data-label="Challenges"]:hover {
 }
 
 /* --- RESPONSIVE QUERIES --- */
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .header {
         padding: 1rem 2rem;
+    }
+
+    .duckhero {
+        top: 65%;
+        width: 16rem;
+        left: 0%;
+    }
+
+    .snake-left {
+        left: -30%;
+        margin-top: -5rem;
+    }
+
+    .snake-skin-story {
+        display: none;
+    }
+
+    .quack-overlay1 {
+        display: none;
+    }
+
+    .story-card1, .story-card2 {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .story-text {
+        flex: 1 1;
+    }
+
+    .snake1 {
+        top: 60%;
+        width: 20rem;
+        right: -5%;
     }
     
     .story-content {
@@ -473,25 +508,20 @@ div[data-label="Challenges"]:hover {
 }
 
 @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-    }
-    
-    .navbar {
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-    }
-    
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
     .hero-main h1 {
         font-size: 2.5rem;
+    }
+
+    .duckhero {
+        display: none;
+    }
+
+    .snake1 {
+        display: none;
+    }
+
+    .snake-left{
+        display: none;
     }
     
     .hero-main h2 {
@@ -501,6 +531,12 @@ div[data-label="Challenges"]:hover {
     .section-title {
         font-size: 2rem;
     }
+
+    .start-btn {
+        font-size: 1rem;
+    }
+
+    .
 }
 
 @media (max-width: 480px) {

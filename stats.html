@@ -18,18 +18,39 @@
   <header class="header">
     <div class="logo">
       <a href="index.html">
-        <img src="assets/images/logo.png" alt="QuackBit Logo" class="logo-img" width="91" height="34">
+        <img src="./assets/images/logo.png" alt="QuackBit Logo" class="logo-img" width="91" height="34">
       </a>
     </div>
-    <nav class="navbar">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="story.html">Courses</a></li>
-        <li class="nav-auth-only" hidden><a href="history.html">My Code</a></li>
-        <li><a href="team.html">About Us</a></li>
-      </ul>
-      <div class="auth-buttons"></div>
-    </nav>
+
+    <div class="header-right">
+      <nav class="navbar" id="main-navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="story.html">Courses</a></li>
+          <li class="nav-auth-only" hidden><a href="history.html">My Code</a></li>
+          <li><a href="team.html">About Us</a></li>
+          <li class="nav-item-has-children user-profile-nav" hidden>
+            <button type="button" class="submenu-toggle" aria-expanded="false">
+              <span>Profile</span>
+              <span class="chevron-icon">▼</span>
+            </button>
+            <ul class="child-menu" hidden>
+              <li><a href="stats.html">Stats</a></li>
+              <li><a href="handbook.html">Guidebook</a></li>
+              <li><button type="button" class="logout-btn">Lock Out</button></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="auth-buttons">
+          <a href="login.html" class="login-text">Lock In!</a>
+        </div>
+      </nav>
+      <button type="button" class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
   </header>
   <script>QuackbitAccount.renderHeader();</script>
 

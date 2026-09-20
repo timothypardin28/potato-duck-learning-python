@@ -86,3 +86,112 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+function renderUserMenu(container, user) {
+    document.querySelectorAll(".nav-auth-only").forEach((item) => { 
+        item.hidden = !user; 
+    });
+
+    const profileNav = document.querySelector(".user-profile-nav");
+    if (profileNav) {
+        profileNav.hidden = !user;
+    }
+
+    if (!container) return;
+
+    if (!user) {
+        container.innerHTML = `<a href="login.html" class="login-text">Lock In!</a>`;
+        return;
+    }
+
+    const page = location.pathname.split("/").pop() || "index.html";
+    const name = escapeHtml(displayName(user));
+    const isChapter = /^(v\d+|g\d+|boss)\.html$/i.test(page);
+    const guidebookHref = isChapter ? `handbook.html?from=${page}` : "handbook.html";
+
+    container.innerHTML = `
+        <div class="user-menu">
+            <button type="button" class="user-menu-toggle" aria-haspopup="true" aria-expanded="false">
+                <span class="user-menu-name">${name}</span>
+                <span class="user-avatar">${avatarHtml(user)}</span>
+            </button>
+            <div class="user-menu-dropdown" role="menu" hidden>
+                <a href="stats.html" role="menuitem" class="${page === "stats.html" ? "active" : ""}">Stats</a>
+                <a href="${guidebookHref}" role="menuitem" class="${page === "handbook.html" ? "active" : ""}">Guidebook</a>
+                <button type="button" role="menuitem" class="user-menu-logout">Lock Out</button>
+            </div>
+        </div>
+    `;
+
+    const toggle = container.querySelector(".user-menu-toggle");
+    const dropdown = container.querySelector(".user-menu-dropdown");
+
+    if (toggle && dropdown) {
+        toggle.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const open = dropdown.hidden;
+            closeAllMenus();
+            dropdown.hidden = !open;
+            toggle.setAttribute("aria-expanded", String(open));
+        });
+    }
+
+    const logoutBtn = container.querySelector(".user-menu-logout");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            clearSession();
+            window.location.href = "login.html";
+        });
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const navbar = document.getElementById("main-navbar");
+
+    if (hamburgerBtn && navbar) {
+        hamburgerBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isActive = navbar.classList.toggle("is-active");
+            hamburgerBtn.classList.toggle("is-active", isActive);
+            hamburgerBtn.setAttribute("aria-expanded", String(isActive));
+        });
+    }
+
+    const profileNav = document.querySelector(".user-profile-nav");
+    if (profileNav) {
+        const submenuToggle = profileNav.querySelector(".submenu-toggle");
+        const childMenu = profileNav.querySelector(".child-menu");
+        const logoutChildBtn = profileNav.querySelector(".logout-btn");
+
+        if (submenuToggle && childMenu) {
+            submenuToggle.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isHidden = childMenu.hidden;
+                childMenu.hidden = !isHidden;
+                profileNav.classList.toggle("is-open", isHidden);
+                submenuToggle.setAttribute("aria-expanded", String(isHidden));
+            });
+        }
+
+        if (logoutChildBtn) {
+            logoutChildBtn.addEventListener("click", () => {
+                if (window.QuackbitAccount) {
+                    window.QuackbitAccount.clearSession();
+                }
+                window.location.href = "login.html";
+            });
+        }
+    }
+
+    document.addEventListener("click", (e) => {
+        if (navbar && !navbar.contains(e.target) && hamburgerBtn && !hamburgerBtn.contains(e.target)) {
+            navbar.classList.remove("is-active");
+            hamburgerBtn.classList.remove("is-active");
+        }
+        if (profileNav && !profileNav.contains(e.target)) {
+            const childMenu = profileNav.querySelector(".child-menu");
+            if (childMenu) childMenu.hidden = true;
+            profileNav.classList.remove("is-open");
+        }
+    });
+});

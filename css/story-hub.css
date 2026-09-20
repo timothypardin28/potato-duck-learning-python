@@ -1,6 +1,10 @@
 @import "ultimate-header.css";
 
-.header {
+.header, .navbar {
+  background: var(--header-color-3section-green);
+}
+
+.user-menu-dropdown{
   background: var(--header-color-3section-green);
 }
 

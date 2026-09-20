@@ -657,10 +657,6 @@ def _quackbit_run_cell_isolated(code_str):
     document.body.removeChild(area);
   }
 
-  // =========================================================================
-  // Search & Navigation
-  // =========================================================================
-
   const sectionEls = Array.from(content.querySelectorAll(".handbook-section"));
   const groupEls = Array.from(content.querySelectorAll(".handbook-group"));
   const navLinks = Array.from(navList.querySelectorAll(".handbook-nav-link"));
@@ -841,7 +837,6 @@ def _quackbit_run_cell_isolated(code_str):
 });
 
 function renderUserMenu(container, user) {
-    // Show/Hide authenticated links
     document.querySelectorAll(".nav-auth-only").forEach((item) => { 
         item.hidden = !user; 
     });
@@ -863,7 +858,6 @@ function renderUserMenu(container, user) {
     const isChapter = /^(v\d+|g\d+|boss)\.html$/i.test(page);
     const guidebookHref = isChapter ? `handbook.html?from=${page}` : "handbook.html";
 
-    // User Avatar Badge Top-Right
     container.innerHTML = `
         <div class="user-menu">
             <button type="button" class="user-menu-toggle" aria-haspopup="true" aria-expanded="false">
@@ -878,7 +872,6 @@ function renderUserMenu(container, user) {
         </div>
     `;
 
-    // Bind User Avatar Dropdown
     const toggle = container.querySelector(".user-menu-toggle");
     const dropdown = container.querySelector(".user-menu-dropdown");
 
@@ -901,12 +894,10 @@ function renderUserMenu(container, user) {
     }
 }
 
-// Global Hamburger & Profile Submenu Controller
 document.addEventListener("DOMContentLoaded", () => {
     const hamburgerBtn = document.getElementById("hamburger-btn");
     const navbar = document.getElementById("main-navbar");
 
-    // Top-Right Hamburger Toggle
     if (hamburgerBtn && navbar) {
         hamburgerBtn.addEventListener("click", (e) => {
             e.stopPropagation();
@@ -916,7 +907,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Profile Child Menu (Accordion / Dropdown) Toggle
     const profileNav = document.querySelector(".user-profile-nav");
     if (profileNav) {
         const submenuToggle = profileNav.querySelector(".submenu-toggle");
@@ -943,7 +933,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Close open menus when clicking outside
     document.addEventListener("click", (e) => {
         if (navbar && !navbar.contains(e.target) && hamburgerBtn && !hamburgerBtn.contains(e.target)) {
             navbar.classList.remove("is-active");

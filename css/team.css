@@ -10,7 +10,7 @@ body {
     flex-direction: column;
 }
 
-.header {
+.header, .navbar, .use-menu-dropdown {
     background-color: var(--header-color-2section);
 }
 
