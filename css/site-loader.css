@@ -1,0 +1,90 @@
+/* =========================================================
+   site-loader.css — the duck loading screen for the website
+   Works with script/site-boot.js (first script in <head>).
+   Drawn with pseudo-elements so it exists on the very first
+   frame, before any other file has finished loading.
+   ========================================================= */
+html.site-booting body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  background: radial-gradient(circle at 50% 42%, #3a3f49 0%, #26292f 60%, #1d1f24 100%);
+  pointer-events: auto;
+  transition: opacity 0.32s ease;
+}
+
+html.site-booting body::after {
+  content: var(--site-loading-text, "Loading\2026");
+  position: fixed;
+  left: 50%;
+  top: 44%;
+  z-index: 99999;
+  width: 320px;
+  margin-left: -160px;
+  padding-top: 158px;
+  background: url("../assets/images/quackbit-duck.png") center top / 140px 140px no-repeat;
+  color: #F3F3F3;
+  font-family: "Winky Rough", "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+  animation: site-duck-bob 1.1s ease-in-out infinite;
+  transition: opacity 0.32s ease;
+  will-change: transform;
+}
+
+html.site-booting.site-boot-done body::before,
+html.site-booting.site-boot-done body::after { opacity: 0; }
+
+@keyframes site-duck-bob {
+  0%, 100% { transform: translateY(-50%) rotate(-4deg); }
+  50%      { transform: translateY(calc(-50% - 12px)) rotate(4deg); }
+}
+
+/* the page underneath must not scroll while the duck is up */
+html.site-booting, html.site-booting body { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.site-booting body::after { animation: none; }
+}
+
+/* NOTE: content-visibility was tried here and removed on purpose.
+   The guessed section sizes did not match the real ones, so the page
+   height flipped between 3091px and 3355px while scrolling, which made
+   the scrollbar jump and the page feel like it stuck at the edges.
+   The image work below gives the speed without that side effect. */
+
+/* =========================================================
+   Home page rendering helpers
+   ========================================================= */
+
+/* Lazy images keep their shape before they arrive, so nothing
+   on the page jumps around while you scroll. */
+.story-img { aspect-ratio: 1000 / 667; height: auto; }
+.card-icon { aspect-ratio: 1 / 1; }
+
+/* The art that moves while scrolling is handed to the graphics
+   card, so scrolling never waits for a repaint. */
+.snake1, .snake2, .eyes, .snake-left, .snake-skin-story, .duckhero {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* The hero image is the largest thing on screen: give it its own
+   layer so the sticky effect does not repaint the whole page. */
+.hero-img { contain: paint; }
+
+/* The sliding snake bars are wider than the screen on purpose.
+   Clip them to their own section so the page itself can never be
+   dragged sideways. */
+.cool-pics, .story-section { overflow-x: clip; }
+
+/* Some decorative art is positioned against the page itself, which is
+   why a section-level clip could not hold it. Making <body> the
+   reference keeps every coordinate identical (body has no margin or
+   padding here) but lets the existing clip apply, so the page can no
+   longer be dragged sideways. */
+html { overflow-x: clip; }
+body { position: relative; }

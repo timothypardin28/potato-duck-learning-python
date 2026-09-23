@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="script/site-boot.js"></script>
   <script src="script/account.js"></script>
   <script>try{if(sessionStorage.getItem("currentUser")||sessionStorage.getItem("activeUser")||localStorage.getItem("currentUser"))document.documentElement.classList.add("logged-in")}catch(e){}</script>
   <meta charset="UTF-8">
@@ -8,10 +9,12 @@
   <title>Quackbit | Interactive Python Learning Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=optional">
-  <link href="https://fonts.googleapis.com/css2?family=Acme&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=optional" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Acme&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/site-loader.css">
   <link rel="icon" type="image/x-icon" href="./assets/images/face.png">
+  <link rel="stylesheet" href="css/site-mobile.css">
 </head>
 <body>
   <audio id="bg-music" loop preload="none">
@@ -60,11 +63,11 @@
     <!-- Hero Section -->
     <section class="hero-main">
       <div class="hero-img">
-        <img src="./assets/images/herobg.png" alt="background for home" class="hero-img-bg">
+        <img decoding="async" src="./assets/images/herobg-w.png" alt="background for home" class="hero-img-bg">
       </div>
       <div class="hero-inner">
-        <img src="./assets/images/opening-duck.png" alt="duck hero" class="duckhero">
-        <img src="./assets/images/snake-skin1.png" alt="snake skin" class="snake1">
+        <img decoding="async" src="./assets/images/opening-duck-w.png" alt="duck hero" class="duckhero">
+        <img decoding="async" src="./assets/images/snake-skin1-w.png" alt="snake skin" class="snake1">
         <div class="hero-content">
           <h1>Quack the Code!</h1>
           <h2>This is Quackbit</h2>
@@ -80,17 +83,17 @@
       <h2 class="section-title">Let's Learn Coding The FUN Way</h2>
       <div class="features-grid">
         <div class="feature-card" data-label="Guided Learning">
-          <img src="./assets/images/target-icon.png" alt="Target Icon" class="card-icon">
+          <img decoding="async" src="./assets/images/target-icon-w.png" alt="Target Icon" class="card-icon">
           <h3>Guided Learning</h3>
           <p>Learn, Play, & Master Coding</p>
         </div>
         <div class="feature-card" data-label="Game Story">
-          <img src="./assets/images/story-icon.png" alt="Story Icon" class="card-icon">
+          <img decoding="async" src="./assets/images/story-icon-w.png" alt="Story Icon" class="card-icon">
           <h3>Game Story</h3>
           <p>Learn, Play, & Master Coding</p>
         </div>
         <div class="feature-card" data-label="Challenges">
-          <img src="./assets/images/challenge-icon.png" alt="Challenge Icon" class="card-icon">
+          <img decoding="async" src="./assets/images/challenge-icon-w.png" alt="Challenge Icon" class="card-icon">
           <h3>Challenges</h3>
           <p>Solve Coding Exercises</p>
         </div>
@@ -99,7 +102,7 @@
 
     <!-- Story/Lore Section -->
     <section class="story-section">
-      <img src="./assets/images/snake-left.png" alt="snake left" class="snake-left">
+      <img decoding="async" src="./assets/images/snake-left-w.png" alt="snake left" class="snake-left">
       <div class="story-content">
         <h2 class="section-title">A Story So GOATED</h2>
         <div class="story-card1">
@@ -108,9 +111,9 @@
             <p>Is there anything greater than a small duck with a will bigger than the cosmos? A bunch of codes are exactly the right tools to overcome impossible challenges!</p>
           </div>
           <div class="story-visuals">
-            <img src="./assets/images/duck-battle.png" alt="story1" class="story-img">
+            <img decoding="async" src="./assets/images/duck-battle-w.png" alt="story1" class="story-img">
             <div class="image1-story-overlay">
-              <img src="./assets/images/overlay-duck.png" alt="" class="quack-overlay1">
+              <img decoding="async" src="./assets/images/overlay-duck.png" alt="" class="quack-overlay1">
             </div>
           </div>
         </div>
@@ -119,17 +122,17 @@
 
     <section class="cool-section">
         <div class="cool-pics">
-          <img src="./assets/images/snake-skin2.png" alt="snake-skin2" class="snake2">
-          <img src="./assets/images/eyes.png" alt="cool eyes" class="eyes">
+          <img decoding="async" src="./assets/images/snake-skin2-w.png" alt="snake-skin2" class="snake2">
+          <img decoding="async" src="./assets/images/eyes.png" alt="cool eyes" class="eyes">
         </div>
     </section>
 
     <section class="story-section">
-      <img src="./assets/images/snake-skin1.png" alt="snake skin" class="snake-skin-story">
+      <img decoding="async" src="./assets/images/snake-skin1-w.png" alt="snake skin" class="snake-skin-story">
       <div class="story-content">
         <div class="story-card2">
           <div class="story-visuals">
-            <img src="./assets/images/duck-snake.png" alt="QuackBit fighting a giant goose" class="story-img">
+            <img decoding="async" src="./assets/images/duck-snake-w.png" alt="QuackBit fighting a giant goose" class="story-img">
             <div class="code-overlay">
               <pre><code>
 name = input("Enter your name: ")
