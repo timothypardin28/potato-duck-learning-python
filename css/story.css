@@ -870,7 +870,7 @@ main.story-main,
     border-top: none !important;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 360px) {
   .user-menu-name {
     display: none;
   }
