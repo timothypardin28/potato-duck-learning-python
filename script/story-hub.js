@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressKey = `quackbit_progress_${userIdentifier}`;
     
     function getUnlockedLevel() {
+        if (!currentUser) {
+            return 1;
+        }
         return parseInt(localStorage.getItem(progressKey) || "1", 10);
     }
 
