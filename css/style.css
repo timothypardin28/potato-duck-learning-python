@@ -7,13 +7,11 @@
     padding: 0;
 }
 
-.header.header-alt, .navbar {
+.header.header-alt,
+.header.header-alt .navbar,
+.header.header-alt .user-menu-dropdown {
     background-color: var(--header-color-1section);
     border: none;
-}
-
-.user-menu-dropdown{
-    background-color: var(--header-color-1section);
 }
 
 #bg-music {
@@ -31,7 +29,7 @@ body {
     flex-direction: column;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; 
+    overflow-x: clip; 
 }
 
 /* --- Main Layout --- */
@@ -535,8 +533,6 @@ div[data-label="Challenges"]:hover {
     .start-btn {
         font-size: 1rem;
     }
-
-    .
 }
 
 @media (max-width: 480px) {

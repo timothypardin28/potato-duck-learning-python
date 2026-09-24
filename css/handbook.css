@@ -117,13 +117,15 @@ body {
 
 .handbook-nav-toggle {
   display: none;
-  width: 100%;
+  width: 50%;
+  max-width: 250px;
   padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem auto;
+  border-radius: 7px;
   font-family: inherit;
   font-weight: 600;
-  background: #ffffff;
-  border: 2px solid var(--border-color);
+  background: var(--team-card2);
+  border: 3px solid var(--header-color-3section-brown);
   scrollbar-width: none;
   -ms-overflow-style: none;
   cursor: pointer;
@@ -1088,8 +1090,24 @@ body {
     padding: 1.25rem 1rem;
   }
 
+  .handbook-group-title {
+    font-size: 1.5rem;
+  }
+
+  .handbook-group-icon {
+    font-size: 1.7rem;
+  }
+
+  .handbook-section-icon {
+    font-size: 1.5rem;
+  }
+
   .handbook-section-title {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+  }
+
+  .handbook-section-body p {
+    font-size: 1rem;
   }
 }
 .btn-handbook {
