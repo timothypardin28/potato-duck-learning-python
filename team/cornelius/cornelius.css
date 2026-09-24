@@ -3,8 +3,8 @@
 :root {
     --bg-main: #2b2445;
     --bg-main2: #684481;
-    --card-bg: rgba(154, 138, 199, 0.211);
-    --card-bg2: rgba(186, 172, 226, 0.277);
+    --card-bg: rgba(97, 84, 130, 0.463);
+    --card-bg2: rgba(56, 39, 104, 0.512);
     --text-primary: #ffffff;
     --text-secondary: #b1a5c9;
     --accent-glow: #d1bcf5;
@@ -55,7 +55,7 @@ body::before {
 }
 
 .header {
-    background-color: rgba(83, 55, 101, 0.685);
+    background-color: var(--card-bg);
     backdrop-filter: blur(10px);
 }
 
