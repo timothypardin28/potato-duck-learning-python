@@ -848,7 +848,7 @@ main.story-main,
   padding-bottom: 5rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
   .chapter-back-nav {
     bottom: 0.75rem;
     left: 0.75rem;
@@ -861,6 +861,24 @@ main.story-main,
     padding: 0.4rem 0.7rem;
     font-size: 0.78rem;
   }
+
+  .auth-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: right !important;
+    padding: 0 !important;
+    border-top: none !important;
+}
+
+@media (max-width: 500px) {
+  .user-menu-name {
+    display: none;
+  }
+
+  .auth-buttons{
+    width: fit-content !important;
+  }
+}
 }
 
 .draft-status {
