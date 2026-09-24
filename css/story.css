@@ -158,11 +158,10 @@ video {
   width: 100%;
   max-width: 1100px;
   margin: 1rem auto;
-  background: #0f172a;
+  background: var(--main-bg);
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.45);
-  border: 1px solid #334155;
+  border: 3px solid var(--dark-bg);
   color: #f8fafc;
   animation: fadeIn 0.35s ease;
   text-align: left;
@@ -214,7 +213,7 @@ video {
   border-radius: 10px;
   overflow: hidden;
   background: #020617;
-  border: 1px solid #1e293b;
+  border: 3px solid var(--dark-bg);
   max-height: calc(100vh - 280px);
   aspect-ratio: 16 / 9;
   display: flex;
@@ -340,6 +339,7 @@ video {
   font-size: 0.95rem;
   font-weight: 700;
   border-radius: 7px;
+  border: 3px solid #34d399;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -354,13 +354,13 @@ video {
 }
 
 .btn-outcome-retry {
-  background: #f59e0b;
+  background: var(--primary);
   color: #ffffff;
   padding: 10px 22px;
   font-size: 0.95rem;
   font-weight: 700;
   border-radius: 7px;
-  border: none;
+  border: 3px solid var(--primary);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -370,17 +370,18 @@ video {
 
 .btn-outcome-retry:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+  background: var(--main-bg);
+  border: 3px solid var(--text-main);
 }
 
 .btn-outcome-review {
-  background: #1e293b;
+  background: var(--primary-hover);
   color: #cbd5e1;
   padding: 9px 18px;
   font-size: 0.9rem;
   font-weight: 600;
   border-radius: 7px;
-  border: 1px solid #334155;
+  border: 3px solid #cbd5e1;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -389,7 +390,7 @@ video {
 }
 
 .btn-outcome-review:hover {
-  background: #334155;
+  background: #767676;
   color: #ffffff;
 }
 
@@ -915,13 +916,13 @@ main.story-main,
 }
 
 .btn-outcome-saved {
-  background: transparent;
-  color: #fbbf24;
+  background: var(--primary-hover);
+  color: var(--primary-second);
   padding: 9px 18px;
   font-size: 0.9rem;
   font-weight: 600;
   border-radius: 7px;
-  border: 1px solid rgba(251, 191, 36, 0.45);
+  border: 3px solid var(--primary-second);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
