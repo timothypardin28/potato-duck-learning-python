@@ -10,6 +10,13 @@ html {
 scroll-behavior: smooth;
 }
 
+main {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
 body {
 background: #e8e3d9;
 color: #171717;
