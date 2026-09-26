@@ -6,6 +6,7 @@ body {
     background-image: url('pictures/background 7.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #4a3f45;
     margin: 0;
     padding: 0;
@@ -31,27 +32,40 @@ body {
     flex-direction: row;
 }
 
+.page-title {
+    text-align: center;
+    padding: 30px 20px 0;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
 .subtitle {
     color: #6f6680;
-    font-size: 30px;
+    font-size: 24px;
     font-style: italic;
+    margin-top: 0;
 }
 
 section {
     max-width: 850px;
     padding: 20px;
-    margin: 30px auto;
+    margin: 40px auto; 
 }
 
 section h2 {
     font-family: 'Playfair Display', serif;
     border-bottom: 1px solid rgba(102, 109, 146, 0.8);
     color: #9b6b82;
-    margin-bottom: 15px;
+    margin-top: 10px;      
+    margin-bottom: 15px;   
+    padding-bottom: 8px;   
 }
 
 section p {
-    max-width: 750px;
+    max-width: 100%;
     line-height: 1.7;
 }
 
@@ -60,12 +74,13 @@ section p {
     align-items: center;
     justify-content: center;
     gap: 25px;
-    width: 70%;
-    margin: auto;
+    width: 90%;
+    max-width: 850px;
+    margin: 40px auto; 
 }
 
 .about-text {
-    width: 600px;
+    width: 100%;
     padding: 25px;
     background-color: rgba(255, 255, 255, 0.88);
     border: 2px solid rgba(117, 125, 167, 0.8);
@@ -73,24 +88,18 @@ section p {
     box-shadow: 0 6px 15px rgba(150, 110, 130, 0.12);
 }
 
-.about-text h2 {
-    color: #9b6b82;
-    margin-top: 0;
-    border-bottom: 1px solid rgba(102, 109, 146, 0.8);
-    padding-bottom: 8px;
-}
-
-
 .about-image {
     width: 220px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .profile {
     display: block;
     margin: 20px auto;
-    width: 230px;
-    height: 230px;
+    width: 100%;
+    max-width: 230px;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #6e788f;
@@ -102,33 +111,19 @@ section p {
     justify-content: center;
     align-items: stretch;
     gap: 25px;
+    width: 90%;
     max-width: 850px;
-    margin: 40px auto;
+    margin: 40px auto; 
+    padding: 0;
 }
 
-.role {
+.role, .interest {
     flex: 1;
     padding: 25px;
     background-color: rgba(255, 255, 255, 0.88);
     border: 2px solid rgba(117, 125, 167, 0.8);
     border-radius: 20px;
     box-shadow: 0 6px 15px rgba(150, 110, 130, 0.12);
-}
-
-.interest {
-    flex: 1;
-    padding: 25px;
-    background-color: rgba(255, 255, 255, 0.88);
-    border: 2px solid rgba(117, 125, 167, 0.8);
-    border-radius: 20px;
-    box-shadow: 0 6px 15px rgba(150, 110, 130, 0.12);
-}
-
-interest h2 {
-    color: #9b6b82;
-    margin-top: 0;
-    border-bottom: 1px solid rgba(102, 109, 146, 0.8);
-    padding-bottom: 8px;
 }
 
 .interest li {
@@ -138,22 +133,24 @@ interest h2 {
     border-radius: 10px;
 }
 
-.interests li::before {
+.interest li::before {
     content: "☆";
     color: #9b6b82;
+    margin-right: 8px;
 }
 
-.interests ul {
+.interest ul {
     list-style: none;
     padding: 0;
     margin: 15px 0;
-    max-width: 500px;
+    max-width: 100%;
 }
 
 .goals {
+    width: 90%;
     max-width: 800px;
-    margin: 20px auto;
-    padding: 30px;
+    margin: 40px auto; 
+    padding: 25px;     
     background-color: white;
     border: 2px solid rgba(117, 125, 167, 0.8);
     background-size: cover;
@@ -162,9 +159,10 @@ interest h2 {
 }
 
 .back-container {
+    width: 90%;
     max-width: 850px;
-    margin: 20px auto 0;
-    padding: 0 20px;
+    margin: 20px auto 40px;
+    padding: 0;
     text-align: left;
 }
 
@@ -184,4 +182,39 @@ interest h2 {
 .back-button:hover {
     background-color: white;
     transform: translateX(-4px);
+}
+
+@media screen and (max-width: 900px) {
+    .page-title {
+        padding: 20px 15px 0;
+    }
+    
+    h1 {
+        font-size: 26px;
+    }
+    
+    .subtitle {
+        font-size: 20px;
+    }
+
+    .about, .role-interest, .goals {
+        margin: 30px auto;
+    }
+
+    .about {
+        flex-direction: column-reverse;
+        gap: 15px;
+    }
+
+    .about-image {
+        width: 180px;
+    }
+
+    .about-text, .role, .interest, .goals {
+        padding: 20px;
+    }
+
+    .role-interest {
+        flex-direction: column;
+    }
 }
