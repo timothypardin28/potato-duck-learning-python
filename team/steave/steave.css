@@ -8,6 +8,25 @@ body {
   background-image: url("images/background.png");
 }
 
+.header .navbar {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: auto;
+    max-width: none;
+    max-height: none;
+    opacity: 1;
+    visibility: visible;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+}
+
+.header .nav-links {
+    flex-direction: row;
+}
+
 h1 {
   color: #ffffff;             
   font-size: 36px;           
