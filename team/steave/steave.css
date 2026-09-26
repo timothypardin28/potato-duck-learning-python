@@ -1,11 +1,14 @@
 @import "../../css/ultimate-header.css";
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background-color: #0f172a00;
-  background-image: url("images/background.png");
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #0f172a00;
+    background-image: url("images/background.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .header .navbar {
@@ -28,138 +31,153 @@ body {
 }
 
 h1 {
-  color: #ffffff;             
-  font-size: 36px;           
-  margin: 0;                 
+    color: #ffffff;             
+    font-size: 36px;           
+    margin: 0;                 
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 h2 {
-  color: #ffffff;             
-  font-size: 28px;           
-  margin: 0 0 15px 0;        
+    color: #ffffff;             
+    font-size: 28px;           
+    margin: 0 0 15px 0;        
 }
 
 .profile {
-  display: flex;              
-  justify-content: center;
-  align-items: flex-start;
-  min-height: calc(100vh - 80px);
-  padding: 20px;            
+    display: flex;              
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 80px);
+    padding: 20px;            
 }
 
 .profile-box {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  background-color: #0f172a00;
-  max-width: 900px;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    background-color: #0f172a00;
+    max-width: 900px;
+    width: 100%;
 }
 
 .profile-up {
-  display: flex;
-  flex-direction: row;
-  gap: 60px; 
-  align-items: center;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 60px; 
+    align-items: center;
+    width: 100%;
 }
 
 .photo-frame {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 8px solid rgb(92, 37, 3); 
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid rgb(92, 37, 3); 
 }
 
-
 .profile-info {
-  flex: 1; 
-  background-color: rgb(92, 37, 3);
-  border-radius: 8px;
-  padding : 6px;
+    flex: 1; 
+    width: 100%;
+    background-color: rgb(92, 37, 3);
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .info-grid {
-  display: grid;
-  grid-template-columns: auto 1fr; 
-  gap: 12px 30px;                 
-  align-items: center;
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 12px 30px;                 
+    align-items: center;
 }
 
 .label {
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: bold;
-  white-space: nowrap; 
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap; 
 }
 
 .value {
-  color: #ffffff;
-  font-size: 18px;
+    color: #ffffff;
+    font-size: 18px;
+    word-break: break-word;
 }
 
 .profile-description {
     background-color: rgb(92, 37, 3);
-  color: #ffffff;
-  font-size: 18px;
-  line-height: 1.5;
-  padding: 10px 20px;
-  border-radius: 8px;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
 .profile-description p {
     text-align: justify;
-  margin: 0;
+    margin: 0;
 }
 
 .profile-image-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; 
 }
-
 
 .badge-container {
-  display: flex;
-  flex-direction: row;
-  gap: 10px; 
-  justify-content: center;
-  flex-wrap: wrap; 
+    display: flex;
+    flex-direction: row;
+    gap: 10px; 
+    justify-content: center;
+    flex-wrap: wrap; 
 }
-
 
 .badge {
-  background-color: rgb(92, 37, 3); 
-  color: #ffbf00;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 6px 14px;
-  border-radius: 20px; 
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+    background-color: rgb(92, 37, 3); 
+    color: #ffbf00;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 20px; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
+
 strong {
-  color: #cb9800; 
+    color: #cb9800; 
 }
 
-.floating-back-btn {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background-color: #2564eb00; 
-  color: #F8FAFC;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 12px 20px;
-  z-index: 1000; 
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
+@media screen and (max-width: 900px) {
+    .profile-box {
+        gap: 30px;
+    }
+    
+    .profile-up {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .photo-frame {
+        width: 200px;
+        height: 200px;
+    }
 
-.floating-back-btn:hover {
-  background-color: #1d4fd800;
-  color:rgb(207, 0, 0);
-  transform: translateY(-3px); 
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    h1.page-title {
+        font-size: 28px;
+    }
+
+    .info-grid {
+        gap: 10px 15px;
+    }
+
+    .label, .value {
+        font-size: 16px;
+    }
 }
