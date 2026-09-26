@@ -3,29 +3,34 @@
 body {
     margin: 0;
     background-color: var(--main-bg);
-    color: white;
+    color: var(--text-main);
     font-family: 'Winky Rough', sans-serif;
 }
 
+main {
+    height: 100vh !important;
+    align-items: center !important;
+    justify-content: center;
+}
+
 main section {
-    height: 90vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: 7rem;
 }
 
 main section h1 {
     margin-bottom: 3rem;
     font-size: 2.2rem;
     letter-spacing: 1px;
+    padding: 0 2rem;
 }
 
-/* Target the specific register form ID */
 #register-form {
     width: 100%;
-    max-width: 500px; /* Slightly wider than login to fit the "Re-enter Password" label */
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -38,14 +43,12 @@ main section h1 {
     margin-bottom: 0; 
 }
 
-/* Target the label directly without the .child class */
 .form-group label {
     text-align: left;
     font-size: 1.5rem;
-    flex: 0 0 220px; /* Increased width so the longer label text fits on one line */
+    flex: 0 0 220px;
 }
 
-/* Target the input directly without the .child class */
 .form-group input {
     flex: 1;
     padding: 12px;
@@ -57,12 +60,11 @@ main section h1 {
     outline: none;
 }
 
-/* Button style matching the light gray/beige color in the register image */
 .btn {
     width: 100%;
     padding: 15px;
     background-color: #d1d5db; 
-    color: #1e293b; /* Dark slate text color for contrast */
+    color: #1e293b;
     border: none;
     border-radius: 6px;
     font-size: 1.3rem;
@@ -82,4 +84,27 @@ main section h1 {
     color: #dc2626;
     margin-bottom: 1rem;
     font-weight: 500;
+}
+
+@media (max-width: 650px) {
+    main section {
+        padding: 0;
+    }
+
+    main section h1{
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-group label  {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
+
+    .register-form {
+        gap: 0.5rem;
+    }
 }
