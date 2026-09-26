@@ -1,146 +1,205 @@
 @import "../../css/ultimate-header.css";
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  }
-
-html {
-scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-main {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-background: #e8e3d9;
-color: #171717;
-font-family: "DM Mono", monospace;
+    background: #e8e3d9;
+    color: #171717;
+    font-family: "DM Mono", monospace;
+    overflow-x: hidden; 
+}
+
+main {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 
 span {
-color: #d94b32;
+    color: #d94b32;
 }
 
-header p {
-font-size: 9px;
-letter-spacing: 2px;
+.page-intro {
+    position: absolute;
+    top: 30px;
+    left: 8%;
+    z-index: 10;
 }
 
-ul{
-  padding-left:40px;
+.page-intro p {
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    color: #77736c;
+}
+
+ul {
+    padding-left: 40px;
 }
 
 .logo {
-font: 25px "Jaro", sans-serif;
-color: #171717;
-text-decoration: none;
+    font: 25px "Jaro", sans-serif;
+    color: #171717;
+    text-decoration: none;
 }
 
 .background-word {
-position: absolute;
-bottom: -30px;
-left: -20px;
-font: 27vw "Jaro", sans-serif;
-color: transparent;
--webkit-text-stroke: 1px #c9c5bc;
+    position: absolute;
+    bottom: -30px;
+    left: -20px;
+    font: 27vw "Jaro", sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 1px #c9c5bc;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .hero {
-position: absolute;
-top: 50%;
-left: 8%;
-transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+    z-index: 2;
 }
 
 .intro {
-color: #77736c;
-font-size: 10px;
-letter-spacing: 3px;
-margin-bottom: 20px;
+    color: #77736c;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
 }
 
 h1 {
-font: 17vw/.7 "Jaro", sans-serif;
-letter-spacing: -5px;
+    font: 17vw/.7 "Jaro", sans-serif;
+    letter-spacing: -5px;
 }
 
 .role {
-font-size: 11px;
-letter-spacing: 3px;
-margin-top: 35px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-top: 35px;
 }
 
 .description {
-max-width: 420px;
-margin-top: 30px;
-font: 18px/1.3 "Judson", serif;
+    max-width: 420px;
+    margin-top: 30px;
+    font: 18px/1.3 "Judson", serif;
 }
 
 .photo {
-position: absolute;
-width: 280px;
-height: 380px;
-right: 17%;
-top: 50%;
-transform: translateY(-50%) rotate(5deg);
-transition: .4s;
+    position: absolute;
+    width: 280px;
+    height: 380px;
+    right: 17%;
+    top: 50%;
+    transform: translateY(-50%) rotate(5deg);
+    transition: .4s;
+    z-index: 2;
 }
 
 .photo img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-border: 2px solid #171717;
-filter: grayscale(100%);
-transition: .4s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid #171717;
+    filter: grayscale(100%);
+    transition: .4s;
 }
 
 .photo:hover {
-transform: translateY(-50%) rotate(0);
+    transform: translateY(-50%) rotate(0);
 }
 
 .photo:hover img {
-filter: grayscale(0);
-transform: scale(1.03);
+    filter: grayscale(0);
+    transform: scale(1.03);
 }
 
 .photo-text {
-position: absolute;
-bottom: 0;
-width: 100%;
-padding: 18px;
-color: white;
-background: #171717aa;
-opacity: 0;
-transition: .4s;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 18px;
+    color: white;
+    background: #171717aa;
+    opacity: 0;
+    transition: .4s;
 }
 
 .photo:hover .photo-text {
-opacity: 1;
+    opacity: 1;
 }
-
-
-.scroll {
-position: absolute;
-bottom: 30px;
-left: 8%;
-font-size: 8px;
-letter-spacing: 1px;
-}
-
 
 footer {
-height: 60px;
-padding: 0 40px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-font-size: 8px;
-letter-spacing: 1px;
+    height: 60px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 900px) {
+    main {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        padding-bottom: 60px;
+    }
+
+    .page-intro {
+        position: relative;
+        top: 0;
+        left: 0;
+        padding: 30px 20px 0;
+    }
+
+    .hero {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 22vw;
+    }
+
+    .description {
+        max-width: 100%;
+    }
+
+    .photo {
+        position: relative;
+        right: 0;
+        top: 0;
+        transform: rotate(3deg);
+        margin: 20px auto 40px;
+        width: 100%;
+        max-width: 280px;
+        aspect-ratio: 280 / 380;
+        height: auto;
+    }
+
+    .photo:hover {
+        transform: rotate(0); 
+    }
+
+    .background-word {
+        bottom: 5%;
+        left: -10px;
+        font-size: 35vw;
+        -webkit-text-stroke: 1px #d6d3cc;
+    }
 }
